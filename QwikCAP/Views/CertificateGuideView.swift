@@ -90,31 +90,6 @@ struct CertificateGuideView: View {
                     .background(Color(.systemBackground))
                     .cornerRadius(12)
                     .shadow(radius: 2)
-
-                    // Troubleshooting
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text("Troubleshooting")
-                            .font(.headline)
-
-                        TroubleshootingItem(
-                            question: "http://burp not loading?",
-                            answer: "Make sure the VPN is connected and your Burp proxy is running and listening on the configured IP/port."
-                        )
-
-                        TroubleshootingItem(
-                            question: "HTTPS sites not loading after certificate install?",
-                            answer: "Ensure you've enabled 'Full Trust' for PortSwigger CA in Settings > General > About > Certificate Trust Settings."
-                        )
-
-                        TroubleshootingItem(
-                            question: "How do I remove the certificate?",
-                            answer: "Go to Settings > General > VPN & Device Management, tap the PortSwigger CA profile, and select 'Remove Profile'."
-                        )
-                    }
-                    .padding()
-                    .background(Color(.systemBackground))
-                    .cornerRadius(12)
-                    .shadow(radius: 2)
                 }
                 .padding()
             }

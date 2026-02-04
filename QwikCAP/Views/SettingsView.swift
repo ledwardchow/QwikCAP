@@ -4,8 +4,6 @@ struct SettingsView: View {
     @EnvironmentObject var proxyConfig: ProxyConfiguration
     @EnvironmentObject var vpnManager: VPNManager
 
-    @State private var showPresetPicker = false
-
     var body: some View {
         NavigationView {
             Form {
@@ -32,14 +30,10 @@ struct SettingsView: View {
                             .frame(width: 100)
                             .keyboardType(.numberPad)
                     }
-
-                    Button("Apply Preset...") {
-                        showPresetPicker = true
-                    }
                 } header: {
-                    Text("Proxy Target (Burp Suite)")
+                    Text("Proxy Target")
                 } footer: {
-                    Text("Enter the IP address of the machine running Burp Suite. Use your computer's local IP if Burp is on the same network.")
+                    Text("Enter the IP address and port of the proxy server.")
                 }
 
                 // Host Filtering
@@ -88,31 +82,11 @@ struct SettingsView: View {
                         Text("1.0.0")
                             .foregroundColor(.secondary)
                     }
-
-                    Link(destination: URL(string: "https://portswigger.net/burp")!) {
-                        HStack {
-                            Text("Burp Suite Documentation")
-                            Spacer()
-                            Image(systemName: "arrow.up.right.square")
-                        }
-                    }
                 } header: {
                     Text("About")
                 }
             }
             .navigationTitle("Settings")
-            .confirmationDialog("Select Preset", isPresented: $showPresetPicker) {
-                Button("Burp Suite (Default)") {
-                    proxyConfig.proxyPort = 8080
-                }
-                Button("Charles Proxy") {
-                    proxyConfig.proxyPort = 8888
-                }
-                Button("mitmproxy") {
-                    proxyConfig.proxyPort = 8080
-                }
-                Button("Cancel", role: .cancel) {}
-            }
         }
     }
 }

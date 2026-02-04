@@ -1,0 +1,48 @@
+name: QwikCAP
+options:
+  bundleIdPrefix: com.qwikcap
+  deploymentTarget:
+    iOS: "16.0"
+  xcodeVersion: "15.0"
+
+settings:
+  SWIFT_VERSION: "5.0"
+  DEVELOPMENT_TEAM: ""
+
+targets:
+  QwikCAP:
+    type: application
+    platform: iOS
+    sources:
+      - path: QwikCAP
+        excludes:
+          - "**/.DS_Store"
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.qwikcap.app
+      INFOPLIST_FILE: QwikCAP/Info.plist
+      CODE_SIGN_ENTITLEMENTS: QwikCAP/QwikCAP.entitlements
+      ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+      INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+      INFOPLIST_KEY_UILaunchScreen_Generation: YES
+      INFOPLIST_KEY_LSApplicationCategoryType: "public.app-category.developer-tools"
+    dependencies:
+      - target: QwikCAPTunnel
+        embed: true
+      - framework: NetworkExtension.framework
+      - framework: Security.framework
+
+  QwikCAPTunnel:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: QwikCAPTunnel
+        excludes:
+          - "**/.DS_Store"
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.qwikcap.app.tunnel
+      INFOPLIST_FILE: QwikCAPTunnel/Info.plist
+      CODE_SIGN_ENTITLEMENTS: QwikCAPTunnel/QwikCAPTunnel.entitlements
+      SKIP_INSTALL: YES
+    dependencies:
+      - framework: NetworkExtension.framework
+      - framework: Security.framework

@@ -1,0 +1,617 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8A1B2C3D4E5F6A7B /* QwikCAPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A7C /* QwikCAPApp.swift */; };
+		8A1B2C3D4E5F6A7D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A7E /* ContentView.swift */; };
+		8A1B2C3D4E5F6A7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A80 /* Assets.xcassets */; };
+		8A1B2C3D4E5F6A81 /* CertificateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A82 /* CertificateManager.swift */; };
+		8A1B2C3D4E5F6A83 /* VPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A84 /* VPNManager.swift */; };
+		8A1B2C3D4E5F6A85 /* ProxyConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A86 /* ProxyConfiguration.swift */; };
+		8A1B2C3D4E5F6A87 /* TrafficLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A88 /* TrafficLogger.swift */; };
+		8A1B2C3D4E5F6A89 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A8A /* SettingsView.swift */; };
+		8A1B2C3D4E5F6A8B /* CertificateGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A8C /* CertificateGuideView.swift */; };
+		8A1B2C3D4E5F6A8D /* TrafficListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A8E /* TrafficListView.swift */; };
+		8A1B2C3D4E5F6A8F /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A90 /* NetworkExtension.framework */; };
+		8A1B2C3D4E5F6A91 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A92 /* Security.framework */; };
+		8A1B2C3D4E5F6A93 /* TrafficEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A94 /* TrafficEntry.swift */; };
+		8A1B2C3D4E5F6A95 /* HTTPParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A96 /* HTTPParser.swift */; };
+		8A1B2C3D4E5F6A97 /* TLSInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A98 /* TLSInterceptor.swift */; };
+		8A1B2C3D4E5F6A99 /* WebSocketHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A9A /* WebSocketHandler.swift */; };
+		8A1B2C3D4E5F6A9B /* ProxyForwarder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A9C /* ProxyForwarder.swift */; };
+		8A1B2C3D4E5F6A9D /* TrafficDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A9E /* TrafficDetailView.swift */; };
+		8A1B2C3D4E5F6AA0 /* DebugLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6AA1 /* DebugLogView.swift */; };
+		8B2C3D4E5F6A7B8C /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2C3D4E5F6A7B8D /* PacketTunnelProvider.swift */; };
+		8B2C3D4E5F6A7B8E /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A90 /* NetworkExtension.framework */; };
+		8B2C3D4E5F6A7B8F /* QwikCAPTunnel.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8B2C3D4E5F6A7B90 /* QwikCAPTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8B2C3D4E5F6A7B91 /* TCPProxyServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2C3D4E5F6A7B92 /* TCPProxyServer.swift */; };
+		8B2C3D4E5F6A7B93 /* TLSHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2C3D4E5F6A7B94 /* TLSHandler.swift */; };
+		8B2C3D4E5F6A7B95 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2C3D4E5F6A7B96 /* ConnectionManager.swift */; };
+		8B2C3D4E5F6A7B97 /* DNSResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2C3D4E5F6A7B98 /* DNSResolver.swift */; };
+		8B2C3D4E5F6A7B99 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A92 /* Security.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8C3D4E5F6A7B8C9D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D4E5F6A7B8C9D0E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8E5F6A7B8C9D0E1F;
+			remoteInfo = QwikCAPTunnel;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8F6A7B8C9D0E1F2A /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8B2C3D4E5F6A7B8F /* QwikCAPTunnel.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		8A1B2C3D4E5F6A7C /* QwikCAPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QwikCAPApp.swift; sourceTree = "<group>"; };
+		8A1B2C3D4E5F6A7E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8A1B2C3D4E5F6A80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8A1B2C3D4E5F6A82 /* CertificateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateManager.swift; sourceTree = "<group>"; };
+		8A1B2C3D4E5F6A84 /* VPNManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNManager.swift; sourceTree = "<group>"; };
+		8A1B2C3D4E5F6A86 /* ProxyConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyConfiguration.swift; sourceTree = "<group>"; };
+		8A1B2C3D4E5F6A88 /* TrafficLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficLogger.swift; sourceTree = "<group>"; };
+		8A1B2C3D4E5F6A8A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		8A1B2C3D4E5F6A8C /* CertificateGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateGuideView.swift; sourceTree = "<group>"; };
+		8A1B2C3D4E5F6A8E /* TrafficListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficListView.swift; sourceTree = "<group>"; };
+		8A1B2C3D4E5F6A90 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		8A1B2C3D4E5F6A92 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		8A1B2C3D4E5F6A94 /* TrafficEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficEntry.swift; sourceTree = "<group>"; };
+		8A1B2C3D4E5F6A96 /* HTTPParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPParser.swift; sourceTree = "<group>"; };
+		8A1B2C3D4E5F6A98 /* TLSInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLSInterceptor.swift; sourceTree = "<group>"; };
+		8A1B2C3D4E5F6A9A /* WebSocketHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketHandler.swift; sourceTree = "<group>"; };
+		8A1B2C3D4E5F6A9C /* ProxyForwarder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyForwarder.swift; sourceTree = "<group>"; };
+		8A1B2C3D4E5F6A9E /* TrafficDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficDetailView.swift; sourceTree = "<group>"; };
+		8A1B2C3D4E5F6AA1 /* DebugLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugLogView.swift; sourceTree = "<group>"; };
+		8B2C3D4E5F6A7B8D /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
+		8B2C3D4E5F6A7B90 /* QwikCAPTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = QwikCAPTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B2C3D4E5F6A7B92 /* TCPProxyServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCPProxyServer.swift; sourceTree = "<group>"; };
+		8B2C3D4E5F6A7B94 /* TLSHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLSHandler.swift; sourceTree = "<group>"; };
+		8B2C3D4E5F6A7B96 /* ConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
+		8B2C3D4E5F6A7B98 /* DNSResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSResolver.swift; sourceTree = "<group>"; };
+		907B8C9D0E1F2A3B /* QwikCAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QwikCAP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		918C9D0E1F2A3B4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		929D0E1F2A3B4C5D /* QwikCAP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QwikCAP.entitlements; sourceTree = "<group>"; };
+		93AE1F2A3B4C5D6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94BF2A3B4C5D6E7F /* QwikCAPTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QwikCAPTunnel.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		95C03B4C5D6E7F80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A1B2C3D4E5F6A8F /* NetworkExtension.framework in Frameworks */,
+				8A1B2C3D4E5F6A91 /* Security.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96D14C5D6E7F8091 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B2C3D4E5F6A7B8E /* NetworkExtension.framework in Frameworks */,
+				8B2C3D4E5F6A7B99 /* Security.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		97E25D6E7F8091A2 = {
+			isa = PBXGroup;
+			children = (
+				98F36E7F8091A2B3 /* QwikCAP */,
+				99047F8091A2B3C4 /* QwikCAPTunnel */,
+				9A158091A2B3C4D5 /* Frameworks */,
+				9B2691A2B3C4D5E6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		98F36E7F8091A2B3 /* QwikCAP */ = {
+			isa = PBXGroup;
+			children = (
+				8A1B2C3D4E5F6A7C /* QwikCAPApp.swift */,
+				8A1B2C3D4E5F6A7E /* ContentView.swift */,
+				9C37A2B3C4D5E6F7 /* Views */,
+				9D48B3C4D5E6F708 /* Services */,
+				9E59C4D5E6F70819 /* Models */,
+				9F6AD5E6F708192A /* Network */,
+				8A1B2C3D4E5F6A80 /* Assets.xcassets */,
+				918C9D0E1F2A3B4C /* Info.plist */,
+				929D0E1F2A3B4C5D /* QwikCAP.entitlements */,
+			);
+			path = QwikCAP;
+			sourceTree = "<group>";
+		};
+		99047F8091A2B3C4 /* QwikCAPTunnel */ = {
+			isa = PBXGroup;
+			children = (
+				8B2C3D4E5F6A7B8D /* PacketTunnelProvider.swift */,
+				8B2C3D4E5F6A7B92 /* TCPProxyServer.swift */,
+				8B2C3D4E5F6A7B94 /* TLSHandler.swift */,
+				8B2C3D4E5F6A7B96 /* ConnectionManager.swift */,
+				8B2C3D4E5F6A7B98 /* DNSResolver.swift */,
+				93AE1F2A3B4C5D6E /* Info.plist */,
+				94BF2A3B4C5D6E7F /* QwikCAPTunnel.entitlements */,
+			);
+			path = QwikCAPTunnel;
+			sourceTree = "<group>";
+		};
+		9A158091A2B3C4D5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8A1B2C3D4E5F6A90 /* NetworkExtension.framework */,
+				8A1B2C3D4E5F6A92 /* Security.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9B2691A2B3C4D5E6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				907B8C9D0E1F2A3B /* QwikCAP.app */,
+				8B2C3D4E5F6A7B90 /* QwikCAPTunnel.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9C37A2B3C4D5E6F7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8A1B2C3D4E5F6A8A /* SettingsView.swift */,
+				8A1B2C3D4E5F6A8C /* CertificateGuideView.swift */,
+				8A1B2C3D4E5F6A8E /* TrafficListView.swift */,
+				8A1B2C3D4E5F6A9E /* TrafficDetailView.swift */,
+				8A1B2C3D4E5F6AA1 /* DebugLogView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9D48B3C4D5E6F708 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8A1B2C3D4E5F6A82 /* CertificateManager.swift */,
+				8A1B2C3D4E5F6A84 /* VPNManager.swift */,
+				8A1B2C3D4E5F6A88 /* TrafficLogger.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		9E59C4D5E6F70819 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8A1B2C3D4E5F6A86 /* ProxyConfiguration.swift */,
+				8A1B2C3D4E5F6A94 /* TrafficEntry.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9F6AD5E6F708192A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				8A1B2C3D4E5F6A96 /* HTTPParser.swift */,
+				8A1B2C3D4E5F6A98 /* TLSInterceptor.swift */,
+				8A1B2C3D4E5F6A9A /* WebSocketHandler.swift */,
+				8A1B2C3D4E5F6A9C /* ProxyForwarder.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8E5F6A7B8C9D0E1F /* QwikCAPTunnel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5C03B4C5D6E7F80 /* Build configuration list for PBXNativeTarget "QwikCAPTunnel" */;
+			buildPhases = (
+				A6D14C5D6E7F8091 /* Sources */,
+				96D14C5D6E7F8091 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QwikCAPTunnel;
+			productName = QwikCAPTunnel;
+			productReference = 8B2C3D4E5F6A7B90 /* QwikCAPTunnel.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		A07BE6F708192A3B /* QwikCAP */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A18CF708192A3B4C /* Build configuration list for PBXNativeTarget "QwikCAP" */;
+			buildPhases = (
+				A29D0819A3B4C5D6 /* Sources */,
+				95C03B4C5D6E7F80 /* Frameworks */,
+				A3AE192A3B4C5D6E /* Resources */,
+				8F6A7B8C9D0E1F2A /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A4BF2A3B4C5D6E7F /* PBXTargetDependency */,
+			);
+			name = QwikCAP;
+			productName = QwikCAP;
+			productReference = 907B8C9D0E1F2A3B /* QwikCAP.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8D4E5F6A7B8C9D0E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 2620;
+				TargetAttributes = {
+					8E5F6A7B8C9D0E1F = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					A07BE6F708192A3B = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = A7E25D6E7F8091A2 /* Build configuration list for PBXProject "QwikCAP" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 97E25D6E7F8091A2;
+			productRefGroup = 9B2691A2B3C4D5E6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A07BE6F708192A3B /* QwikCAP */,
+				8E5F6A7B8C9D0E1F /* QwikCAPTunnel */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A3AE192A3B4C5D6E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A1B2C3D4E5F6A7F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A29D0819A3B4C5D6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A1B2C3D4E5F6A7B /* QwikCAPApp.swift in Sources */,
+				8A1B2C3D4E5F6A7D /* ContentView.swift in Sources */,
+				8A1B2C3D4E5F6A81 /* CertificateManager.swift in Sources */,
+				8A1B2C3D4E5F6A83 /* VPNManager.swift in Sources */,
+				8A1B2C3D4E5F6A85 /* ProxyConfiguration.swift in Sources */,
+				8A1B2C3D4E5F6A87 /* TrafficLogger.swift in Sources */,
+				8A1B2C3D4E5F6A89 /* SettingsView.swift in Sources */,
+				8A1B2C3D4E5F6A8B /* CertificateGuideView.swift in Sources */,
+				8A1B2C3D4E5F6A8D /* TrafficListView.swift in Sources */,
+				8A1B2C3D4E5F6A93 /* TrafficEntry.swift in Sources */,
+				8A1B2C3D4E5F6A95 /* HTTPParser.swift in Sources */,
+				8A1B2C3D4E5F6A97 /* TLSInterceptor.swift in Sources */,
+				8A1B2C3D4E5F6A99 /* WebSocketHandler.swift in Sources */,
+				8A1B2C3D4E5F6A9B /* ProxyForwarder.swift in Sources */,
+				8A1B2C3D4E5F6A9D /* TrafficDetailView.swift in Sources */,
+				8A1B2C3D4E5F6AA0 /* DebugLogView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6D14C5D6E7F8091 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B2C3D4E5F6A7B8C /* PacketTunnelProvider.swift in Sources */,
+				8B2C3D4E5F6A7B91 /* TCPProxyServer.swift in Sources */,
+				8B2C3D4E5F6A7B93 /* TLSHandler.swift in Sources */,
+				8B2C3D4E5F6A7B95 /* ConnectionManager.swift in Sources */,
+				8B2C3D4E5F6A7B97 /* DNSResolver.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A4BF2A3B4C5D6E7F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8E5F6A7B8C9D0E1F /* QwikCAPTunnel */;
+			targetProxy = 8C3D4E5F6A7B8C9D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A8F36E7F8091A2B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 22AYPY84RT;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A9047F8091A2B3C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 22AYPY84RT;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AA158091A2B3C4D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = QwikCAP/QwikCAP.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = QwikCAP/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qwikcap.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AB2691A2B3C4D5E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = QwikCAP/QwikCAP.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = QwikCAP/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qwikcap.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AC37A2B3C4D5E6F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = QwikCAPTunnel/QwikCAPTunnel.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = QwikCAPTunnel/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = QwikCAPTunnel;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qwikcap.app.tunnel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AD48B3C4D5E6F708 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = QwikCAPTunnel/QwikCAPTunnel.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = QwikCAPTunnel/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = QwikCAPTunnel;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qwikcap.app.tunnel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A18CF708192A3B4C /* Build configuration list for PBXNativeTarget "QwikCAP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA158091A2B3C4D5 /* Debug */,
+				AB2691A2B3C4D5E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5C03B4C5D6E7F80 /* Build configuration list for PBXNativeTarget "QwikCAPTunnel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC37A2B3C4D5E6F7 /* Debug */,
+				AD48B3C4D5E6F708 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7E25D6E7F8091A2 /* Build configuration list for PBXProject "QwikCAP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8F36E7F8091A2B3 /* Debug */,
+				A9047F8091A2B3C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8D4E5F6A7B8C9D0E /* Project object */;
+}

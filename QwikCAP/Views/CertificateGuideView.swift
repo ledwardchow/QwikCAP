@@ -1,38 +1,7 @@
 import SwiftUI
 
 struct CertificateGuideView: View {
-    @EnvironmentObject var certificateManager: CertificateManager
-
-    @State private var currentStep = 0
-    @State private var isGenerating = false
-    @State private var showCertificateInfo = false
-
-    let steps = [
-        GuideStep(
-            title: "Generate Certificate",
-            description: "Create a CA certificate that will be used to intercept HTTPS traffic.",
-            icon: "key.fill",
-            action: "Generate Certificate"
-        ),
-        GuideStep(
-            title: "Export Certificate",
-            description: "Save the certificate to your device so you can install it.",
-            icon: "square.and.arrow.up",
-            action: "Export Certificate"
-        ),
-        GuideStep(
-            title: "Install Profile",
-            description: "Open Settings > General > VPN & Device Management and install the QwikCAP profile.",
-            icon: "iphone.badge.play",
-            action: "Open Settings"
-        ),
-        GuideStep(
-            title: "Trust Certificate",
-            description: "Go to Settings > General > About > Certificate Trust Settings and enable full trust for QwikCAP Root CA.",
-            icon: "checkmark.shield.fill",
-            action: "Open Trust Settings"
-        )
-    ]
+    @EnvironmentObject var vpnManager: VPNManager
 
     var body: some View {
         NavigationView {
@@ -40,50 +9,19 @@ struct CertificateGuideView: View {
                 VStack(spacing: 24) {
                     // Status card
                     VStack(spacing: 16) {
-                        Image(systemName: statusIcon)
+                        Image(systemName: vpnManager.isConnected ? "checkmark.shield.fill" : "shield.slash.fill")
                             .font(.system(size: 56))
-                            .foregroundColor(statusColor)
+                            .foregroundColor(vpnManager.isConnected ? .green : .orange)
 
-                        Text(statusTitle)
+                        Text(vpnManager.isConnected ? "VPN Connected" : "Connect VPN First")
                             .font(.headline)
 
-                        Text(certificateManager.statusMessage)
+                        Text(vpnManager.isConnected ?
+                             "You can now install the Burp certificate" :
+                             "Connect the VPN before installing the certificate")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                             .multilineTextAlignment(.center)
-
-                        // Show "I've Trusted the Certificate" button when appropriate
-                        if certificateManager.detailedStatus == .trustPending ||
-                           certificateManager.detailedStatus == .exported {
-                            Button(action: {
-                                certificateManager.markCertificateAsTrusted()
-                            }) {
-                                HStack {
-                                    Image(systemName: "checkmark.circle.fill")
-                                    Text("I've Installed & Trusted the Certificate")
-                                }
-                                .font(.subheadline)
-                                .fontWeight(.semibold)
-                                .padding(.horizontal, 20)
-                                .padding(.vertical, 12)
-                                .background(Color.green)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                            }
-                            .padding(.top, 8)
-                        }
-
-                        // Show reset button if certificate is marked as trusted
-                        if certificateManager.detailedStatus == .ready {
-                            Button(action: {
-                                certificateManager.resetTrustStatus()
-                            }) {
-                                Text("Reset Trust Status")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                            }
-                            .padding(.top, 4)
-                        }
                     }
                     .padding()
                     .frame(maxWidth: .infinity)
@@ -91,56 +29,62 @@ struct CertificateGuideView: View {
                     .cornerRadius(12)
                     .shadow(radius: 2)
 
-                    // Certificate info
-                    if !certificateManager.certificateFingerprint.isEmpty {
-                        VStack(alignment: .leading, spacing: 12) {
-                            HStack {
-                                Text("Certificate Info")
-                                    .font(.headline)
-                                Spacer()
-                                Button(action: { showCertificateInfo.toggle() }) {
-                                    Image(systemName: showCertificateInfo ? "chevron.up" : "chevron.down")
-                                }
-                            }
-
-                            if showCertificateInfo {
-                                VStack(alignment: .leading, spacing: 8) {
-                                    InfoRow(label: "Common Name", value: "QwikCAP Root CA")
-                                    InfoRow(label: "Organization", value: "QwikCAP")
-
-                                    VStack(alignment: .leading, spacing: 4) {
-                                        Text("SHA-256 Fingerprint")
-                                            .font(.caption)
-                                            .foregroundColor(.secondary)
-                                        Text(certificateManager.certificateFingerprint)
-                                            .font(.system(.caption2, design: .monospaced))
-                                            .textSelection(.enabled)
-                                    }
-                                }
-                            }
-                        }
-                        .padding()
-                        .background(Color(.systemBackground))
-                        .cornerRadius(12)
-                        .shadow(radius: 2)
-                    }
-
                     // Setup guide
                     VStack(alignment: .leading, spacing: 16) {
-                        Text("Setup Guide")
+                        Text("Certificate Setup")
                             .font(.headline)
 
-                        ForEach(Array(steps.enumerated()), id: \.offset) { index, step in
-                            StepCard(
-                                step: step,
-                                stepNumber: index + 1,
-                                isActive: index == currentStep,
-                                isCompleted: index < currentStep,
-                                action: {
-                                    performStepAction(index)
+                        CertStepCard(
+                            stepNumber: 1,
+                            title: "Connect VPN",
+                            description: "Enable the VPN from the Dashboard tab to route traffic through Burp Suite.",
+                            icon: "network",
+                            isCompleted: vpnManager.isConnected
+                        )
+
+                        CertStepCard(
+                            stepNumber: 2,
+                            title: "Open Certificate URL",
+                            description: "With VPN connected, open Safari and navigate to http://burp to download the certificate.",
+                            icon: "safari",
+                            isCompleted: false,
+                            actionTitle: vpnManager.isConnected ? "Open http://burp" : nil,
+                            action: vpnManager.isConnected ? {
+                                if let url = URL(string: "http://burp") {
+                                    UIApplication.shared.open(url)
                                 }
-                            )
-                        }
+                            } : nil
+                        )
+
+                        CertStepCard(
+                            stepNumber: 3,
+                            title: "Download Certificate",
+                            description: "On the Burp page, tap 'CA Certificate' to download the certificate file.",
+                            icon: "arrow.down.circle",
+                            isCompleted: false
+                        )
+
+                        CertStepCard(
+                            stepNumber: 4,
+                            title: "Install Profile",
+                            description: "Go to Settings > General > VPN & Device Management and install the downloaded profile.",
+                            icon: "gear",
+                            isCompleted: false,
+                            actionTitle: "Open Settings",
+                            action: {
+                                if let url = URL(string: UIApplication.openSettingsURLString) {
+                                    UIApplication.shared.open(url)
+                                }
+                            }
+                        )
+
+                        CertStepCard(
+                            stepNumber: 5,
+                            title: "Trust Certificate",
+                            description: "Go to Settings > General > About > Certificate Trust Settings and enable full trust for PortSwigger CA.",
+                            icon: "checkmark.shield",
+                            isCompleted: false
+                        )
                     }
                     .padding()
                     .background(Color(.systemBackground))
@@ -153,18 +97,18 @@ struct CertificateGuideView: View {
                             .font(.headline)
 
                         TroubleshootingItem(
-                            question: "Certificate not showing in Settings?",
-                            answer: "Make sure you exported the certificate and opened it on this device. Try exporting again via AirDrop to yourself."
+                            question: "http://burp not loading?",
+                            answer: "Make sure the VPN is connected and your Burp proxy is running and listening on the configured IP/port."
                         )
 
                         TroubleshootingItem(
-                            question: "HTTPS sites not loading?",
-                            answer: "Ensure you've enabled 'Full Trust' for the certificate in Certificate Trust Settings."
+                            question: "HTTPS sites not loading after certificate install?",
+                            answer: "Ensure you've enabled 'Full Trust' for PortSwigger CA in Settings > General > About > Certificate Trust Settings."
                         )
 
                         TroubleshootingItem(
                             question: "How do I remove the certificate?",
-                            answer: "Go to Settings > General > VPN & Device Management, tap the QwikCAP profile, and select 'Remove Profile'."
+                            answer: "Go to Settings > General > VPN & Device Management, tap the PortSwigger CA profile, and select 'Remove Profile'."
                         )
                     }
                     .padding()
@@ -176,122 +120,25 @@ struct CertificateGuideView: View {
             }
             .background(Color(.systemGroupedBackground))
             .navigationTitle("Certificate Setup")
-            .onAppear {
-                certificateManager.checkCertificateStatus()
-            }
-        }
-    }
-
-    // MARK: - Computed Properties for Status
-
-    private var statusIcon: String {
-        switch certificateManager.detailedStatus {
-        case .notGenerated:
-            return "shield.slash.fill"
-        case .generated, .exported:
-            return "shield.fill"
-        case .installationPending, .trustPending:
-            return "exclamationmark.shield.fill"
-        case .ready:
-            return "checkmark.shield.fill"
-        }
-    }
-
-    private var statusColor: Color {
-        switch certificateManager.detailedStatus {
-        case .notGenerated:
-            return .red
-        case .generated, .exported, .installationPending, .trustPending:
-            return .orange
-        case .ready:
-            return .green
-        }
-    }
-
-    private var statusTitle: String {
-        switch certificateManager.detailedStatus {
-        case .notGenerated:
-            return "Certificate Setup Required"
-        case .generated:
-            return "Certificate Generated"
-        case .exported:
-            return "Certificate Exported"
-        case .installationPending:
-            return "Install Profile in Settings"
-        case .trustPending:
-            return "Enable Certificate Trust"
-        case .ready:
-            return "Certificate Ready"
-        }
-    }
-
-    private func performStepAction(_ stepIndex: Int) {
-        switch stepIndex {
-        case 0:
-            // Generate certificate
-            isGenerating = true
-            Task {
-                do {
-                    let _ = try await certificateManager.generateCACertificate()
-                    await MainActor.run {
-                        isGenerating = false
-                        currentStep = 1
-                    }
-                } catch {
-                    await MainActor.run {
-                        isGenerating = false
-                    }
-                }
-            }
-
-        case 1:
-            // Export certificate
-            certificateManager.exportCertificateForInstallation()
-            currentStep = 2
-
-        case 2:
-            // Open settings
-            if let url = URL(string: UIApplication.openSettingsURLString) {
-                UIApplication.shared.open(url)
-            }
-            currentStep = 3
-
-        case 3:
-            // Open trust settings (this URL might not work on all iOS versions)
-            if let url = URL(string: "App-Prefs:root=General&path=About/CERT_TRUST_SETTINGS") {
-                if UIApplication.shared.canOpenURL(url) {
-                    UIApplication.shared.open(url)
-                } else if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
-                    UIApplication.shared.open(settingsUrl)
-                }
-            }
-
-        default:
-            break
         }
     }
 }
 
-struct GuideStep {
+struct CertStepCard: View {
+    let stepNumber: Int
     let title: String
     let description: String
     let icon: String
-    let action: String
-}
-
-struct StepCard: View {
-    let step: GuideStep
-    let stepNumber: Int
-    let isActive: Bool
     let isCompleted: Bool
-    let action: () -> Void
+    var actionTitle: String? = nil
+    var action: (() -> Void)? = nil
 
     var body: some View {
         HStack(alignment: .top, spacing: 16) {
             // Step number/checkmark
             ZStack {
                 Circle()
-                    .fill(isCompleted ? Color.green : (isActive ? Color.blue : Color.gray.opacity(0.3)))
+                    .fill(isCompleted ? Color.green : Color.gray.opacity(0.3))
                     .frame(width: 32, height: 32)
 
                 if isCompleted {
@@ -303,27 +150,29 @@ struct StepCard: View {
                     Text("\(stepNumber)")
                         .font(.caption)
                         .fontWeight(.bold)
-                        .foregroundColor(isActive ? .white : .gray)
+                        .foregroundColor(.secondary)
                 }
             }
 
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
-                    Image(systemName: step.icon)
-                        .foregroundColor(isActive ? .blue : .gray)
+                    Image(systemName: icon)
+                        .foregroundColor(isCompleted ? .green : .blue)
 
-                    Text(step.title)
+                    Text(title)
                         .font(.subheadline)
                         .fontWeight(.semibold)
+                        .strikethrough(isCompleted)
+                        .foregroundColor(isCompleted ? .secondary : .primary)
                 }
 
-                Text(step.description)
+                Text(description)
                     .font(.caption)
                     .foregroundColor(.secondary)
 
-                if isActive {
+                if let actionTitle = actionTitle, let action = action {
                     Button(action: action) {
-                        Text(step.action)
+                        Text(actionTitle)
                             .font(.caption)
                             .fontWeight(.semibold)
                             .padding(.horizontal, 16)
@@ -337,24 +186,8 @@ struct StepCard: View {
             }
         }
         .padding()
-        .background(isActive ? Color.blue.opacity(0.1) : Color.clear)
+        .background(Color.gray.opacity(0.05))
         .cornerRadius(8)
-    }
-}
-
-struct InfoRow: View {
-    let label: String
-    let value: String
-
-    var body: some View {
-        HStack {
-            Text(label)
-                .font(.caption)
-                .foregroundColor(.secondary)
-            Spacer()
-            Text(value)
-                .font(.caption)
-        }
     }
 }
 
@@ -395,5 +228,5 @@ struct TroubleshootingItem: View {
 
 #Preview {
     CertificateGuideView()
-        .environmentObject(CertificateManager.shared)
+        .environmentObject(VPNManager.shared)
 }

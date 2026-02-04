@@ -5,9 +5,6 @@ struct SettingsView: View {
     @EnvironmentObject var vpnManager: VPNManager
 
     @State private var showPresetPicker = false
-    @State private var showExcludedHostsEditor = false
-    @State private var showIncludedHostsEditor = false
-    @State private var newHost = ""
 
     var body: some View {
         NavigationView {
@@ -27,7 +24,10 @@ struct SettingsView: View {
                     HStack {
                         Text("Port")
                         Spacer()
-                        TextField("8080", value: $proxyConfig.proxyPort, format: .number)
+                        TextField("8080", text: Binding(
+                            get: { String(proxyConfig.proxyPort) },
+                            set: { proxyConfig.proxyPort = Int($0) ?? 8080 }
+                        ))
                             .textFieldStyle(.roundedBorder)
                             .frame(width: 100)
                             .keyboardType(.numberPad)
@@ -40,39 +40,6 @@ struct SettingsView: View {
                     Text("Proxy Target (Burp Suite)")
                 } footer: {
                     Text("Enter the IP address of the machine running Burp Suite. Use your computer's local IP if Burp is on the same network.")
-                }
-
-                // Capture Options
-                Section {
-                    Toggle("HTTP Traffic", isOn: $proxyConfig.captureHTTP)
-                    Toggle("HTTPS Traffic", isOn: $proxyConfig.captureHTTPS)
-                    Toggle("WebSocket Traffic", isOn: $proxyConfig.captureWebSocket)
-                    Toggle("Transparent Proxy Mode", isOn: $proxyConfig.transparentMode)
-                } header: {
-                    Text("Capture Options")
-                } footer: {
-                    Text("Transparent mode forwards traffic without modifying it. Disable for debugging.")
-                }
-
-                // Logging Options
-                Section {
-                    Toggle("Log Request Bodies", isOn: $proxyConfig.logRequestBodies)
-                    Toggle("Log Response Bodies", isOn: $proxyConfig.logResponseBodies)
-
-                    HStack {
-                        Text("Max Body Size")
-                        Spacer()
-                        Picker("", selection: $proxyConfig.maxBodySize) {
-                            Text("100 KB").tag(100 * 1024)
-                            Text("500 KB").tag(500 * 1024)
-                            Text("1 MB").tag(1024 * 1024)
-                            Text("5 MB").tag(5 * 1024 * 1024)
-                            Text("10 MB").tag(10 * 1024 * 1024)
-                        }
-                        .pickerStyle(.menu)
-                    }
-                } header: {
-                    Text("Logging")
                 }
 
                 // Host Filtering
@@ -88,22 +55,10 @@ struct SettingsView: View {
                                 .foregroundColor(.secondary)
                         }
                     }
-
-                    NavigationLink(destination: HostListEditor(
-                        title: "Included Hosts Only",
-                        hosts: $proxyConfig.includedHosts
-                    )) {
-                        HStack {
-                            Text("Included Hosts Only")
-                            Spacer()
-                            Text(proxyConfig.includedHosts.isEmpty ? "All" : "\(proxyConfig.includedHosts.count)")
-                                .foregroundColor(.secondary)
-                        }
-                    }
                 } header: {
                     Text("Host Filtering")
                 } footer: {
-                    Text("Excluded hosts bypass the proxy. If 'Included Hosts Only' has entries, only those hosts are captured.")
+                    Text("Excluded hosts bypass the proxy and connect directly.")
                 }
 
                 // Actions
@@ -119,36 +74,10 @@ struct SettingsView: View {
                         }
                     }
                     .disabled(!vpnManager.isConnected)
-
-                    Button(role: .destructive, action: {
-                        TrafficLogger.shared.clearLog()
-                    }) {
-                        HStack {
-                            Image(systemName: "trash")
-                            Text("Clear Traffic Log")
-                        }
-                    }
                 } header: {
                     Text("Actions")
-                }
-
-                // Export/Import
-                Section {
-                    Button(action: exportConfiguration) {
-                        HStack {
-                            Image(systemName: "square.and.arrow.up")
-                            Text("Export Configuration")
-                        }
-                    }
-
-                    Button(action: importConfiguration) {
-                        HStack {
-                            Image(systemName: "square.and.arrow.down")
-                            Text("Import Configuration")
-                        }
-                    }
-                } header: {
-                    Text("Configuration")
+                } footer: {
+                    Text("Apply configuration changes to the active VPN connection.")
                 }
 
                 // About
@@ -174,34 +103,17 @@ struct SettingsView: View {
             .navigationTitle("Settings")
             .confirmationDialog("Select Preset", isPresented: $showPresetPicker) {
                 Button("Burp Suite (Default)") {
-                    proxyConfig.applyBurpSuitePreset()
+                    proxyConfig.proxyPort = 8080
                 }
                 Button("Charles Proxy") {
-                    proxyConfig.applyCharlesProxyPreset()
+                    proxyConfig.proxyPort = 8888
                 }
                 Button("mitmproxy") {
-                    proxyConfig.applyMitmProxyPreset()
+                    proxyConfig.proxyPort = 8080
                 }
                 Button("Cancel", role: .cancel) {}
             }
         }
-    }
-
-    private func exportConfiguration() {
-        guard let data = proxyConfig.exportConfiguration() else { return }
-
-        let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent("qwikcap_config.json")
-        try? data.write(to: tempURL)
-
-        let activityVC = UIActivityViewController(activityItems: [tempURL], applicationActivities: nil)
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let rootVC = windowScene.windows.first?.rootViewController {
-            rootVC.present(activityVC, animated: true)
-        }
-    }
-
-    private func importConfiguration() {
-        // Would need document picker - simplified for now
     }
 }
 

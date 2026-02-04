@@ -9,7 +9,6 @@ class VPNManager: ObservableObject {
     @Published var statusMessage = "Not connected"
 
     private var vpnManager: NETunnelProviderManager?
-    private let appGroupID = "group.com.qwikcap.app"
 
     private init() {
         Task {
@@ -53,21 +52,12 @@ class VPNManager: ObservableObject {
         protocolConfig.providerConfiguration = [
             "proxyHost": proxyConfig.proxyHost,
             "proxyPort": proxyConfig.proxyPort,
-            "captureHTTP": proxyConfig.captureHTTP,
-            "captureHTTPS": proxyConfig.captureHTTPS,
-            "captureWebSocket": proxyConfig.captureWebSocket,
-            "excludedHosts": proxyConfig.excludedHosts,
-            "transparentMode": proxyConfig.transparentMode
+            "excludedHosts": proxyConfig.excludedHosts
         ] as [String: Any]
 
         manager.protocolConfiguration = protocolConfig
-        manager.localizedDescription = "QwikCAP Traffic Capture"
+        manager.localizedDescription = "QwikCAP Proxy"
         manager.isEnabled = true
-
-        // Configure on-demand rules (optional)
-        let connectRule = NEOnDemandRuleConnect()
-        connectRule.interfaceTypeMatch = .any
-        manager.onDemandRules = [connectRule]
         manager.isOnDemandEnabled = false
 
         try await manager.saveToPreferences()
@@ -123,9 +113,7 @@ class VPNManager: ObservableObject {
     }
 
     private func waitForConnection() async {
-        guard let manager = vpnManager else { return }
-
-        for _ in 0..<30 { // Wait up to 30 seconds
+        for _ in 0..<30 {
             await updateStatus()
 
             if isConnected {
@@ -142,8 +130,6 @@ class VPNManager: ObservableObject {
     }
 
     private func waitForDisconnection() async {
-        guard let manager = vpnManager else { return }
-
         for _ in 0..<10 {
             await updateStatus()
 
@@ -172,7 +158,7 @@ class VPNManager: ObservableObject {
             case .connected:
                 isConnected = true
                 isConnecting = false
-                statusMessage = "Connected - Capturing traffic"
+                statusMessage = "Connected - Traffic routed through proxy"
             case .connecting:
                 isConnected = false
                 isConnecting = true
@@ -204,7 +190,6 @@ class VPNManager: ObservableObject {
     func updateProxyConfiguration() async {
         guard vpnManager != nil else { return }
 
-        // Save updated configuration
         do {
             try await setupVPNConfiguration()
 
@@ -243,14 +228,6 @@ class VPNManager: ObservableObject {
         } catch {
             return nil
         }
-    }
-
-    func getTrafficStats() async -> [String: Int]? {
-        guard let response = await sendMessageToTunnel(["action": "getStats"]) else {
-            return nil
-        }
-
-        return try? JSONSerialization.jsonObject(with: response) as? [String: Int]
     }
 }
 

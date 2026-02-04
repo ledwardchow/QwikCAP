@@ -10,29 +10,15 @@
 		8A1B2C3D4E5F6A7B /* QwikCAPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A7C /* QwikCAPApp.swift */; };
 		8A1B2C3D4E5F6A7D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A7E /* ContentView.swift */; };
 		8A1B2C3D4E5F6A7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A80 /* Assets.xcassets */; };
-		8A1B2C3D4E5F6A81 /* CertificateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A82 /* CertificateManager.swift */; };
 		8A1B2C3D4E5F6A83 /* VPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A84 /* VPNManager.swift */; };
 		8A1B2C3D4E5F6A85 /* ProxyConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A86 /* ProxyConfiguration.swift */; };
-		8A1B2C3D4E5F6A87 /* TrafficLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A88 /* TrafficLogger.swift */; };
 		8A1B2C3D4E5F6A89 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A8A /* SettingsView.swift */; };
 		8A1B2C3D4E5F6A8B /* CertificateGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A8C /* CertificateGuideView.swift */; };
-		8A1B2C3D4E5F6A8D /* TrafficListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A8E /* TrafficListView.swift */; };
 		8A1B2C3D4E5F6A8F /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A90 /* NetworkExtension.framework */; };
 		8A1B2C3D4E5F6A91 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A92 /* Security.framework */; };
-		8A1B2C3D4E5F6A93 /* TrafficEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A94 /* TrafficEntry.swift */; };
-		8A1B2C3D4E5F6A95 /* HTTPParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A96 /* HTTPParser.swift */; };
-		8A1B2C3D4E5F6A97 /* TLSInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A98 /* TLSInterceptor.swift */; };
-		8A1B2C3D4E5F6A99 /* WebSocketHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A9A /* WebSocketHandler.swift */; };
-		8A1B2C3D4E5F6A9B /* ProxyForwarder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A9C /* ProxyForwarder.swift */; };
-		8A1B2C3D4E5F6A9D /* TrafficDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A9E /* TrafficDetailView.swift */; };
-		8A1B2C3D4E5F6AA0 /* DebugLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6AA1 /* DebugLogView.swift */; };
 		8B2C3D4E5F6A7B8C /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2C3D4E5F6A7B8D /* PacketTunnelProvider.swift */; };
 		8B2C3D4E5F6A7B8E /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A90 /* NetworkExtension.framework */; };
 		8B2C3D4E5F6A7B8F /* QwikCAPTunnel.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8B2C3D4E5F6A7B90 /* QwikCAPTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		8B2C3D4E5F6A7B91 /* TCPProxyServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2C3D4E5F6A7B92 /* TCPProxyServer.swift */; };
-		8B2C3D4E5F6A7B93 /* TLSHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2C3D4E5F6A7B94 /* TLSHandler.swift */; };
-		8B2C3D4E5F6A7B95 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2C3D4E5F6A7B96 /* ConnectionManager.swift */; };
-		8B2C3D4E5F6A7B97 /* DNSResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2C3D4E5F6A7B98 /* DNSResolver.swift */; };
 		8B2C3D4E5F6A7B99 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A92 /* Security.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,28 +50,14 @@
 		8A1B2C3D4E5F6A7C /* QwikCAPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QwikCAPApp.swift; sourceTree = "<group>"; };
 		8A1B2C3D4E5F6A7E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8A1B2C3D4E5F6A80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8A1B2C3D4E5F6A82 /* CertificateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateManager.swift; sourceTree = "<group>"; };
 		8A1B2C3D4E5F6A84 /* VPNManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNManager.swift; sourceTree = "<group>"; };
 		8A1B2C3D4E5F6A86 /* ProxyConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyConfiguration.swift; sourceTree = "<group>"; };
-		8A1B2C3D4E5F6A88 /* TrafficLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficLogger.swift; sourceTree = "<group>"; };
 		8A1B2C3D4E5F6A8A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		8A1B2C3D4E5F6A8C /* CertificateGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateGuideView.swift; sourceTree = "<group>"; };
-		8A1B2C3D4E5F6A8E /* TrafficListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficListView.swift; sourceTree = "<group>"; };
 		8A1B2C3D4E5F6A90 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		8A1B2C3D4E5F6A92 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		8A1B2C3D4E5F6A94 /* TrafficEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficEntry.swift; sourceTree = "<group>"; };
-		8A1B2C3D4E5F6A96 /* HTTPParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPParser.swift; sourceTree = "<group>"; };
-		8A1B2C3D4E5F6A98 /* TLSInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLSInterceptor.swift; sourceTree = "<group>"; };
-		8A1B2C3D4E5F6A9A /* WebSocketHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketHandler.swift; sourceTree = "<group>"; };
-		8A1B2C3D4E5F6A9C /* ProxyForwarder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyForwarder.swift; sourceTree = "<group>"; };
-		8A1B2C3D4E5F6A9E /* TrafficDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficDetailView.swift; sourceTree = "<group>"; };
-		8A1B2C3D4E5F6AA1 /* DebugLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugLogView.swift; sourceTree = "<group>"; };
 		8B2C3D4E5F6A7B8D /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
 		8B2C3D4E5F6A7B90 /* QwikCAPTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = QwikCAPTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		8B2C3D4E5F6A7B92 /* TCPProxyServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCPProxyServer.swift; sourceTree = "<group>"; };
-		8B2C3D4E5F6A7B94 /* TLSHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLSHandler.swift; sourceTree = "<group>"; };
-		8B2C3D4E5F6A7B96 /* ConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
-		8B2C3D4E5F6A7B98 /* DNSResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSResolver.swift; sourceTree = "<group>"; };
 		907B8C9D0E1F2A3B /* QwikCAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QwikCAP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		918C9D0E1F2A3B4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		929D0E1F2A3B4C5D /* QwikCAP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QwikCAP.entitlements; sourceTree = "<group>"; };
@@ -133,7 +105,6 @@
 				9C37A2B3C4D5E6F7 /* Views */,
 				9D48B3C4D5E6F708 /* Services */,
 				9E59C4D5E6F70819 /* Models */,
-				9F6AD5E6F708192A /* Network */,
 				8A1B2C3D4E5F6A80 /* Assets.xcassets */,
 				918C9D0E1F2A3B4C /* Info.plist */,
 				929D0E1F2A3B4C5D /* QwikCAP.entitlements */,
@@ -145,10 +116,6 @@
 			isa = PBXGroup;
 			children = (
 				8B2C3D4E5F6A7B8D /* PacketTunnelProvider.swift */,
-				8B2C3D4E5F6A7B92 /* TCPProxyServer.swift */,
-				8B2C3D4E5F6A7B94 /* TLSHandler.swift */,
-				8B2C3D4E5F6A7B96 /* ConnectionManager.swift */,
-				8B2C3D4E5F6A7B98 /* DNSResolver.swift */,
 				93AE1F2A3B4C5D6E /* Info.plist */,
 				94BF2A3B4C5D6E7F /* QwikCAPTunnel.entitlements */,
 			);
@@ -178,9 +145,6 @@
 			children = (
 				8A1B2C3D4E5F6A8A /* SettingsView.swift */,
 				8A1B2C3D4E5F6A8C /* CertificateGuideView.swift */,
-				8A1B2C3D4E5F6A8E /* TrafficListView.swift */,
-				8A1B2C3D4E5F6A9E /* TrafficDetailView.swift */,
-				8A1B2C3D4E5F6AA1 /* DebugLogView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -188,9 +152,7 @@
 		9D48B3C4D5E6F708 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				8A1B2C3D4E5F6A82 /* CertificateManager.swift */,
 				8A1B2C3D4E5F6A84 /* VPNManager.swift */,
-				8A1B2C3D4E5F6A88 /* TrafficLogger.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -199,20 +161,8 @@
 			isa = PBXGroup;
 			children = (
 				8A1B2C3D4E5F6A86 /* ProxyConfiguration.swift */,
-				8A1B2C3D4E5F6A94 /* TrafficEntry.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		9F6AD5E6F708192A /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				8A1B2C3D4E5F6A96 /* HTTPParser.swift */,
-				8A1B2C3D4E5F6A98 /* TLSInterceptor.swift */,
-				8A1B2C3D4E5F6A9A /* WebSocketHandler.swift */,
-				8A1B2C3D4E5F6A9C /* ProxyForwarder.swift */,
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,20 +258,10 @@
 			files = (
 				8A1B2C3D4E5F6A7B /* QwikCAPApp.swift in Sources */,
 				8A1B2C3D4E5F6A7D /* ContentView.swift in Sources */,
-				8A1B2C3D4E5F6A81 /* CertificateManager.swift in Sources */,
 				8A1B2C3D4E5F6A83 /* VPNManager.swift in Sources */,
 				8A1B2C3D4E5F6A85 /* ProxyConfiguration.swift in Sources */,
-				8A1B2C3D4E5F6A87 /* TrafficLogger.swift in Sources */,
 				8A1B2C3D4E5F6A89 /* SettingsView.swift in Sources */,
 				8A1B2C3D4E5F6A8B /* CertificateGuideView.swift in Sources */,
-				8A1B2C3D4E5F6A8D /* TrafficListView.swift in Sources */,
-				8A1B2C3D4E5F6A93 /* TrafficEntry.swift in Sources */,
-				8A1B2C3D4E5F6A95 /* HTTPParser.swift in Sources */,
-				8A1B2C3D4E5F6A97 /* TLSInterceptor.swift in Sources */,
-				8A1B2C3D4E5F6A99 /* WebSocketHandler.swift in Sources */,
-				8A1B2C3D4E5F6A9B /* ProxyForwarder.swift in Sources */,
-				8A1B2C3D4E5F6A9D /* TrafficDetailView.swift in Sources */,
-				8A1B2C3D4E5F6AA0 /* DebugLogView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,10 +270,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B2C3D4E5F6A7B8C /* PacketTunnelProvider.swift in Sources */,
-				8B2C3D4E5F6A7B91 /* TCPProxyServer.swift in Sources */,
-				8B2C3D4E5F6A7B93 /* TLSHandler.swift in Sources */,
-				8B2C3D4E5F6A7B95 /* ConnectionManager.swift in Sources */,
-				8B2C3D4E5F6A7B97 /* DNSResolver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

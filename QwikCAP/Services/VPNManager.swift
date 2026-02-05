@@ -52,7 +52,9 @@ class VPNManager: ObservableObject {
         protocolConfig.providerConfiguration = [
             "proxyHost": proxyConfig.proxyHost,
             "proxyPort": proxyConfig.proxyPort,
-            "excludedHosts": proxyConfig.excludedHosts
+            "excludedHosts": proxyConfig.excludedHosts,
+            "localInspectionEnabled": proxyConfig.localInspectionEnabled,
+            "forwardToRemoteProxy": proxyConfig.forwardToRemoteProxy
         ] as [String: Any]
 
         manager.protocolConfiguration = protocolConfig
@@ -153,12 +155,18 @@ class VPNManager: ObservableObject {
 
         let status = manager.connection.status
 
+        let proxyConfig = ProxyConfiguration.shared
+
         await MainActor.run {
             switch status {
             case .connected:
                 isConnected = true
                 isConnecting = false
-                statusMessage = "Connected - Traffic routed through proxy"
+                if proxyConfig.localInspectionEnabled {
+                    statusMessage = "Connected - Local traffic inspection active"
+                } else {
+                    statusMessage = "Connected - Traffic routed through proxy"
+                }
             case .connecting:
                 isConnected = false
                 isConnecting = true

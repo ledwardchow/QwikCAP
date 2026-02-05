@@ -20,6 +20,18 @@
 		8B2C3D4E5F6A7B8E /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A90 /* NetworkExtension.framework */; };
 		8B2C3D4E5F6A7B8F /* QwikCAPTunnel.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8B2C3D4E5F6A7B90 /* QwikCAPTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8B2C3D4E5F6A7B99 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A1B2C3D4E5F6A92 /* Security.framework */; };
+		E0F6AAB02F34A25C00423DBE /* TrafficEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F6AAAF2F34A25C00423DBE /* TrafficEntry.swift */; };
+		E0F6AAB32F34A26700423DBE /* CertificateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F6AAB12F34A26700423DBE /* CertificateManager.swift */; };
+		E0F6AAB42F34A26700423DBE /* TrafficStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F6AAB22F34A26700423DBE /* TrafficStore.swift */; };
+		E0F6AAB92F34A27100423DBE /* TrafficDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F6AAB62F34A27100423DBE /* TrafficDetailView.swift */; };
+		E0F6AABA2F34A27100423DBE /* TrafficRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F6AAB82F34A27100423DBE /* TrafficRowView.swift */; };
+		E0F6AABB2F34A27100423DBE /* CertificateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F6AAB52F34A27100423DBE /* CertificateView.swift */; };
+		E0F6AABC2F34A27100423DBE /* TrafficListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F6AAB72F34A27100423DBE /* TrafficListView.swift */; };
+		E0F6AAC32F34A28200423DBE /* ProxyConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F6AABF2F34A28200423DBE /* ProxyConnection.swift */; };
+		E0F6AAC42F34A28200423DBE /* HTTPParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F6AABD2F34A28200423DBE /* HTTPParser.swift */; };
+		E0F6AAC52F34A28200423DBE /* TLSInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F6AAC12F34A28200423DBE /* TLSInterceptor.swift */; };
+		E0F6AAC62F34A28200423DBE /* LocalProxyServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F6AABE2F34A28200423DBE /* LocalProxyServer.swift */; };
+		E0F6AAC72F34A28200423DBE /* TrafficRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F6AAC22F34A28200423DBE /* TrafficRecorder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +75,19 @@
 		929D0E1F2A3B4C5D /* QwikCAP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QwikCAP.entitlements; sourceTree = "<group>"; };
 		93AE1F2A3B4C5D6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94BF2A3B4C5D6E7F /* QwikCAPTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QwikCAPTunnel.entitlements; sourceTree = "<group>"; };
+		E0F6AAAF2F34A25C00423DBE /* TrafficEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficEntry.swift; sourceTree = "<group>"; };
+		E0F6AAB12F34A26700423DBE /* CertificateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateManager.swift; sourceTree = "<group>"; };
+		E0F6AAB22F34A26700423DBE /* TrafficStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficStore.swift; sourceTree = "<group>"; };
+		E0F6AAB52F34A27100423DBE /* CertificateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateView.swift; sourceTree = "<group>"; };
+		E0F6AAB62F34A27100423DBE /* TrafficDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficDetailView.swift; sourceTree = "<group>"; };
+		E0F6AAB72F34A27100423DBE /* TrafficListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficListView.swift; sourceTree = "<group>"; };
+		E0F6AAB82F34A27100423DBE /* TrafficRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficRowView.swift; sourceTree = "<group>"; };
+		E0F6AABD2F34A28200423DBE /* HTTPParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPParser.swift; sourceTree = "<group>"; };
+		E0F6AABE2F34A28200423DBE /* LocalProxyServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalProxyServer.swift; sourceTree = "<group>"; };
+		E0F6AABF2F34A28200423DBE /* ProxyConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyConnection.swift; sourceTree = "<group>"; };
+		E0F6AAC02F34A28200423DBE /* QwikCAPTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QwikCAPTunnel.entitlements; sourceTree = "<group>"; };
+		E0F6AAC12F34A28200423DBE /* TLSInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLSInterceptor.swift; sourceTree = "<group>"; };
+		E0F6AAC22F34A28200423DBE /* TrafficRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficRecorder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +140,12 @@
 		99047F8091A2B3C4 /* QwikCAPTunnel */ = {
 			isa = PBXGroup;
 			children = (
+				E0F6AABD2F34A28200423DBE /* HTTPParser.swift */,
+				E0F6AABE2F34A28200423DBE /* LocalProxyServer.swift */,
+				E0F6AABF2F34A28200423DBE /* ProxyConnection.swift */,
+				E0F6AAC02F34A28200423DBE /* QwikCAPTunnel.entitlements */,
+				E0F6AAC12F34A28200423DBE /* TLSInterceptor.swift */,
+				E0F6AAC22F34A28200423DBE /* TrafficRecorder.swift */,
 				8B2C3D4E5F6A7B8D /* PacketTunnelProvider.swift */,
 				93AE1F2A3B4C5D6E /* Info.plist */,
 				94BF2A3B4C5D6E7F /* QwikCAPTunnel.entitlements */,
@@ -144,6 +175,10 @@
 			isa = PBXGroup;
 			children = (
 				8A1B2C3D4E5F6A8A /* SettingsView.swift */,
+				E0F6AAB52F34A27100423DBE /* CertificateView.swift */,
+				E0F6AAB62F34A27100423DBE /* TrafficDetailView.swift */,
+				E0F6AAB72F34A27100423DBE /* TrafficListView.swift */,
+				E0F6AAB82F34A27100423DBE /* TrafficRowView.swift */,
 				8A1B2C3D4E5F6A8C /* CertificateGuideView.swift */,
 			);
 			path = Views;
@@ -152,6 +187,8 @@
 		9D48B3C4D5E6F708 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E0F6AAB12F34A26700423DBE /* CertificateManager.swift */,
+				E0F6AAB22F34A26700423DBE /* TrafficStore.swift */,
 				8A1B2C3D4E5F6A84 /* VPNManager.swift */,
 			);
 			path = Services;
@@ -160,6 +197,7 @@
 		9E59C4D5E6F70819 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E0F6AAAF2F34A25C00423DBE /* TrafficEntry.swift */,
 				8A1B2C3D4E5F6A86 /* ProxyConfiguration.swift */,
 			);
 			path = Models;
@@ -256,9 +294,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0F6AAB92F34A27100423DBE /* TrafficDetailView.swift in Sources */,
+				E0F6AABA2F34A27100423DBE /* TrafficRowView.swift in Sources */,
+				E0F6AABB2F34A27100423DBE /* CertificateView.swift in Sources */,
+				E0F6AABC2F34A27100423DBE /* TrafficListView.swift in Sources */,
 				8A1B2C3D4E5F6A7B /* QwikCAPApp.swift in Sources */,
 				8A1B2C3D4E5F6A7D /* ContentView.swift in Sources */,
+				E0F6AAB32F34A26700423DBE /* CertificateManager.swift in Sources */,
+				E0F6AAB42F34A26700423DBE /* TrafficStore.swift in Sources */,
 				8A1B2C3D4E5F6A83 /* VPNManager.swift in Sources */,
+				E0F6AAB02F34A25C00423DBE /* TrafficEntry.swift in Sources */,
 				8A1B2C3D4E5F6A85 /* ProxyConfiguration.swift in Sources */,
 				8A1B2C3D4E5F6A89 /* SettingsView.swift in Sources */,
 				8A1B2C3D4E5F6A8B /* CertificateGuideView.swift in Sources */,
@@ -270,6 +315,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B2C3D4E5F6A7B8C /* PacketTunnelProvider.swift in Sources */,
+				E0F6AAC32F34A28200423DBE /* ProxyConnection.swift in Sources */,
+				E0F6AAC42F34A28200423DBE /* HTTPParser.swift in Sources */,
+				E0F6AAC52F34A28200423DBE /* TLSInterceptor.swift in Sources */,
+				E0F6AAC62F34A28200423DBE /* LocalProxyServer.swift in Sources */,
+				E0F6AAC72F34A28200423DBE /* TrafficRecorder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,178 +1,84 @@
 # QwikCAP
+VPN-based direct proxy forwarding for iOS traffic.
 
-**Quick Capture All Packets** - An iOS app that captures HTTP, HTTPS, and WebSocket traffic and forwards it to a proxy like Burp Suite for security testing.
+## Current capabilities
 
-## Features
+- Implements VPN-based direct proxy forwarding via a Network Extension tunnel.
+- Routes device traffic through a VPN tunnel to a designated proxy endpoint (e.g., Burp Suite, mitmproxy).
+- Lightweight configuration focused on quick-start for typical dev/ops scenarios.
+- Architecture supports TLS interception and HTTP/WS parsing in the tunnel, but the current release exposes VPN-forwarding as the primary workflow.
 
-- 🔒 **HTTPS Interception** - Generate and install a CA certificate to intercept encrypted traffic
-- 🌐 **HTTP/HTTPS/WebSocket Support** - Capture all common web traffic types
-- 🔄 **Transparent Proxy** - Forward traffic to Burp Suite, Charles Proxy, or mitmproxy
-- 📊 **Traffic Viewer** - View captured requests/responses with syntax highlighting
-- 📤 **Export Options** - Export traffic as HAR or Burp-compatible format
-- ⚙️ **Configurable** - Filter hosts, exclude domains, configure capture options
+ 
 
-## Requirements
+## Getting started
 
+Prerequisites:
 - iOS 16.0+
 - Xcode 15.0+
 - Apple Developer Account (for Network Extension entitlements)
 - Physical iOS device (Network Extensions don't work in Simulator)
 
-## Setup Instructions
-
-### 1. Developer Account Configuration
-
-Before building, you need to configure your Apple Developer account:
-
-1. Open the project in Xcode
-2. Select the **QwikCAP** target
-3. Go to **Signing & Capabilities**
-4. Select your development team
-5. Update the **Bundle Identifier** to something unique (e.g., `com.yourname.qwikcap`)
-6. Repeat for the **QwikCAPTunnel** extension target
-
-### 2. App Group Configuration
-
-1. In your Apple Developer account, create an App Group with identifier: `group.com.yourname.qwikcap`
-2. Update the App Group identifier in both:
-   - `QwikCAP/QwikCAP.entitlements`
-   - `QwikCAPTunnel/QwikCAPTunnel.entitlements`
-3. Also update the `appGroupID` constant in:
-   - `CertificateManager.swift`
-   - `VPNManager.swift`
-   - `TrafficLogger.swift`
-   - `PacketTunnelProvider.swift`
-   - `TLSHandler.swift`
-   - `ConnectionManager.swift`
-
-### 3. Network Extension Entitlement
-
-You need the **Network Extension** entitlement from Apple:
-
-1. Go to your [Apple Developer Account](https://developer.apple.com/account)
-2. Navigate to **Certificates, Identifiers & Profiles**
-3. Select **Identifiers** and find your App ID
-4. Enable **Network Extensions** capability
-5. Request the **packet-tunnel-provider** entitlement if not already available
-
-### 4. Building and Running
-
-1. Connect your iOS device
-2. Select your device as the build target
-3. Build and run the app (⌘R)
-4. On first launch, iOS will ask for VPN permission
+Setup and Run:
+- Open the project in Xcode and configure signing for the QwikCAP targets as described in the project notes.
+- Build and deploy to a physical iOS device.
+- On first launch, iOS will prompt for VPN permission; grant access to enable the VPN tunnel.
 
 ## Usage
 
-### Initial Setup
+Initial setup steps:
+- Generate and install any required certificates as described in the project setup docs.
+- Configure the proxy endpoint in QwikCAP Settings (IP address and port of your proxy server).
+- Start the VPN-forwarding flow from the app to begin routing traffic through the proxy.
 
-1. **Generate Certificate**: Go to the Certificate tab and tap "Generate Certificate"
-2. **Export Certificate**: Tap "Export Certificate" and choose to save/share the file
-3. **Install Profile**:
-   - Open the certificate file on your iOS device
-   - Go to **Settings > General > VPN & Device Management**
-   - Find the QwikCAP profile and tap **Install**
-4. **Trust Certificate**:
-   - Go to **Settings > General > About > Certificate Trust Settings**
-   - Enable full trust for "QwikCAP Root CA"
+Typical workflow:
+- The app establishes a VPN tunnel to the configured proxy endpoint.
+- Traffic is forwarded through the VPN tunnel to the proxy, enabling interception or analysis by your chosen proxy solution.
 
-### Configuring Burp Suite
+## Configuration
 
-1. In Burp Suite on your computer:
-   - Go to **Proxy > Options**
-   - Add a proxy listener on port `8080` bound to your computer's IP address (not 127.0.0.1)
-   - Ensure "Support invisible proxying" is enabled for transparent mode
+- Config is managed via the app's UI and, where applicable, environment variables.
+- Common fields:
+  - VPN endpoint or configuration for the tunnel
+  - Proxy address and port (e.g., Burp/mitmproxy listener)
+  - Logging level
 
-2. In QwikCAP on your iOS device:
-   - Go to **Settings** tab
-   - Enter your computer's IP address (e.g., `192.168.1.100`)
-   - Set port to `8080`
-   - Tap "Apply Configuration"
+## How VPN forwarding works (conceptual)
 
-3. Start Capturing:
-   - Go to **Dashboard** tab
-   - Tap "Start Capture"
-   - Your device traffic will now appear in Burp Suite
+- The app initializes a VPN tunnel via the iOS Network Extension.
+- All designated traffic is redirected through the VPN tunnel to the proxy endpoint.
+- This release focuses on VPN-forwarding; local inspection features are planned for future releases.
 
-### Finding Your Computer's IP
-
-- **macOS**: System Preferences > Network > Wi-Fi > IP Address
-- **Windows**: `ipconfig` in Command Prompt
-- **Linux**: `ip addr` or `ifconfig`
-
-Make sure your iOS device and computer are on the same network!
-
-## Architecture
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                      QwikCAP App                            │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐  │
-│  │  Dashboard  │  │   Traffic   │  │      Settings       │  │
-│  │    View     │  │    List     │  │        View         │  │
-│  └─────────────┘  └─────────────┘  └─────────────────────┘  │
-│         │               │                    │              │
-│  ┌──────┴───────────────┴────────────────────┴────────┐    │
-│  │              Shared Services                        │    │
-│  │  • VPNManager  • CertificateManager  • TrafficLogger│    │
-│  └─────────────────────────────────────────────────────┘    │
-└─────────────────────────────────────────────────────────────┘
-                              │
-                    App Group (Shared Data)
-                              │
-┌─────────────────────────────────────────────────────────────┐
-│                  QwikCAPTunnel Extension                    │
-│  ┌─────────────────┐  ┌─────────────────────────────────┐  │
-│  │ PacketTunnel    │  │         TCPProxyServer          │  │
-│  │   Provider      │──│  • HTTP Parsing                 │  │
-│  └─────────────────┘  │  • TLS Interception             │  │
-│                       │  • WebSocket Handling            │  │
-│                       │  • Proxy Forwarding              │  │
-│                       └─────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-                    ┌─────────────────┐
-                    │   Burp Suite    │
-                    │   (or other     │
-                    │    proxy)       │
-                    └─────────────────┘
-```
+## Notes for Developers
+- This release focuses on VPN-based direct proxy forwarding via the Network Extension tunnel.
+- Local traffic inspection is not implemented in this release; no configuration or code paths for inspection are exposed here.
 
 ## Troubleshooting
 
-### VPN won't connect
-- Ensure you've granted VPN permission when prompted
-- Check that the Network Extension entitlement is properly configured
-- Try deleting and reinstalling the app
+- VPN won't connect
+  - Ensure VPN permission is granted when prompted
+  - Check that the Network Extension entitlement is correctly configured
+  - Reinstall the app if necessary
 
-### HTTPS sites show certificate errors
-- Make sure you've installed AND trusted the CA certificate
-- Certificate trust is a separate step from installation
-- Go to Settings > General > About > Certificate Trust Settings
+- HTTPS sites show certificate errors
+  - Ensure the CA certificate is installed and trusted
+  - Certificate trust requires an explicit step in iOS settings
 
-### Traffic not appearing in Burp Suite
-- Verify your computer's IP address is correct in QwikCAP settings
-- Ensure Burp is listening on the correct interface (not just localhost)
-- Check that both devices are on the same network
-- Try disabling firewall temporarily
+- Traffic not appearing in the proxy
+  - Verify the proxy endpoint is reachable from the network
+  - Ensure the iOS device and proxy are on the same network or reachable paths exist
+  - Check firewall rules on the proxy side
 
-### Certificate generation fails
-- The app needs Keychain access - try reinstalling
-- Ensure you have sufficient storage space
-
-### App crashes on launch
-- This usually indicates an entitlement issue
-- Verify all signing and capabilities are correctly configured
+- App crashes on launch
+  - Entitlements and signing issues are the most common cause; verify all signing configurations
 
 ## Security Considerations
 
-⚠️ **Important**: This app is intended for security testing of your own applications and devices.
+⚠️ This app is intended for security testing of your own applications and devices.
 
-- Only use on networks and systems you own or have permission to test
-- The CA certificate can intercept ALL HTTPS traffic - be aware of the security implications
-- Remove the CA certificate when not actively testing
-- Never share your generated CA private key
+- Only use on networks you own or have explicit permission to test
+- The VPN tunnel can forward all traffic; handle with care
+- Remove VPN profiles when not actively testing
+- Never share sensitive keys or credentials
 
 ## Project Structure
 
@@ -205,8 +111,6 @@ QwikCAP/
 │   ├── TLSHandler.swift
 │   ├── ConnectionManager.swift
 │   └── DNSResolver.swift
-│
-└── README.md
 ```
 
 ## License

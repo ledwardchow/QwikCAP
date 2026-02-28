@@ -16,7 +16,7 @@ and you have been manually hosting a PAC file, fiddling with proxy settings in y
 Please use the Github issue ticketing system to report bugs! (Or fix it yourself/ask Claude to do it and send a pull request!) 
 
 ## Privacy Policy
-If you arrived here from the App Store - this app collects no data from you, and there is analytics functionality present. The only network traffic this app is coded to send is the traffic to your proxy as part of core functionality.
+If you arrived here from the App Store - this app collects no data from you, and there is no analytics functionality present. The only network traffic this app is coded to send is the traffic to your proxy as part of core functionality.
 
 ## Licence
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
